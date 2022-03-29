@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { userDetailContext } from "../context";
+import { useDispatch } from "react-redux";
+import { addUser } from "../actions/index";
 
 const UserDetailsComponent = () => {
   const [User, setUser] = useState("");
   const [password, setpassword] = useState("");
 
-  const { onSubmit } = useContext(userDetailContext);
+  const dispatch = useDispatch();
   return (
     <div>
       <h1> Login</h1>
@@ -22,7 +23,7 @@ const UserDetailsComponent = () => {
         onChange={(e) => setpassword(e.target.value)}
       />
       <br />
-      <button onClick={() => onSubmit({ User, password })}>
+      <button onClick={() => dispatch(addUser({ User, password }))}>
         <Link to="/dashboard"> Login </Link>
       </button>
     </div>

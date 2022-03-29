@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
-import { userDetailContext } from "../context";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const ChildComponent = () => {
-  var { userDetails } = useContext(userDetailContext);
-
+  const userDetails = useSelector((state) => state.user);
   return (
     <div>
       <h2>Profile</h2>
       <h4> Name: {userDetails?.User}</h4>
-      <h4>Age: {userDetails?.password}</h4>
+      <h4>Password: {userDetails?.password}</h4>
     </div>
   );
 };
